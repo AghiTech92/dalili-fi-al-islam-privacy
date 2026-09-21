@@ -5,9 +5,9 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const docs = path.join(root, 'docs');
-const brands = { fr: 'Rafik Al Mouslim', en: 'Rafik Al Mouslim', ar: 'Rafik Al Mouslim' };
+const brands = { fr: 'Dalili fi al-Islam', en: 'Dalili fi al-Islam', ar: 'دَلِيلِي فِي الإِسْلَام' };
 const languages = Object.keys(brands);
-const base = 'https://anaitmessaoud.github.io/rafik-al-mouslim-privacy/';
+const base = 'https://aghitech92.github.io/dalili-fi-al-islam-privacy/';
 const pages = ['index.html', ...languages.map(lang => `${lang}/index.html`)];
 const sectionIds = ['local', 'location', 'backup', 'ads', 'choices', 'retention', 'security', 'contact', 'website', 'changes'];
 
@@ -23,7 +23,7 @@ for (const page of pages) {
   assert.equal((html.match(/<section id=/g) || []).length, 10, `${page}: complete policy`);
   assert.equal((html.match(/aria-current="page"/g) || []).length, 1, `${page}: selected language`);
   assert.equal((html.match(/hreflang=/g) || []).length, 7, `${page}: language alternatives and navigation`);
-  assert(html.includes('href="mailto:capitech92@gmail.com"'), `${page}: contact`);
+  assert(html.includes('href="mailto:aghitech92@gmail.com"'), `${page}: contact`);
   assert(!/<script\b|<iframe\b|<form\b|http-equiv="refresh"/i.test(html), `${page}: no scripts, embeds, forms or redirects`);
   assert(!/\bTODO\b|\bPLACEHOLDER\b|\{\{CONTACT\}\}|\uFFFD/.test(html), `${page}: no unfinished content or encoding errors`);
   for (const id of sectionIds) assert(html.includes(`<section id="${id}"`), `${page}: missing section ${id}`);

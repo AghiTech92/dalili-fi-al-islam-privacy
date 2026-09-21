@@ -4,9 +4,9 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const out = path.join(root, 'docs');
-const base = 'https://anaitmessaoud.github.io/rafik-al-mouslim-privacy/';
+const base = 'https://aghitech92.github.io/dalili-fi-al-islam-privacy/';
 const languages = ['fr', 'en', 'ar'];
-const updatedIso = '2026-09-20';
+const updatedIso = '2026-09-21';
 const data = Object.assign(
   {},
   ...fs.readdirSync(path.join(root, 'content'))
@@ -19,7 +19,7 @@ const escape = value => String(value)
   .replaceAll('<', '&lt;')
   .replaceAll('>', '&gt;')
   .replaceAll('"', '&quot;');
-const email = 'capitech92@gmail.com';
+const email = 'aghitech92@gmail.com';
 const paragraph = value => escape(value).replace(
   '{{CONTACT}}',
   `<a href="mailto:${email}" dir="ltr">${email}</a>`,

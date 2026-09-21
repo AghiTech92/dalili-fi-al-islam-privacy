@@ -1,18 +1,22 @@
-# Rafik Al Mouslim — politique de confidentialité
+# دَلِيلِي فِي الإِسْلَام — Dalili fi al-Islam — politique de confidentialité
 
 Site public indépendant du projet Android. Ce dépôt contient uniquement les textes de confidentialité, leur générateur et les fichiers statiques du site. Aucun code Android, texte religieux, base de données, identifiant publicitaire de production ou secret n’y est nécessaire.
 
-Site : https://anaitmessaoud.github.io/rafik-al-mouslim-privacy/
+Site : https://aghitech92.github.io/dalili-fi-al-islam-privacy/
 
-Contact public : capitech92@gmail.com
+Contact public : aghitech92@gmail.com
+
+Nom public du développeur Google Play : `Aghiles Tech`.
+
+Pseudo du profil Google associé : `AghiTech92`.
 
 ## Langues et adresses
 
 | Langue | Politique |
 | --- | --- |
-| Français | https://anaitmessaoud.github.io/rafik-al-mouslim-privacy/fr/ |
-| English | https://anaitmessaoud.github.io/rafik-al-mouslim-privacy/en/ |
-| العربية | https://anaitmessaoud.github.io/rafik-al-mouslim-privacy/ar/ |
+| Français | https://aghitech92.github.io/dalili-fi-al-islam-privacy/fr/ |
+| English | https://aghitech92.github.io/dalili-fi-al-islam-privacy/en/ |
+| العربية | https://aghitech92.github.io/dalili-fi-al-islam-privacy/ar/ |
 
 La racine affiche la politique française complète et propose les trois langues. Aucune connexion, aucun JavaScript et aucune redirection automatique ne sont nécessaires. L’arabe utilise une mise en page RTL. Les pages n’ajoutent ni publicité, ni formulaire, ni outil de mesure d’audience, ni cookie du développeur ; les traitements techniques de GitHub sont expliqués dans la politique.
 
@@ -32,13 +36,13 @@ Le validateur vérifie les quatre pages : langue, direction, nom de l’applicat
 
 ## Publication GitHub Pages
 
-Source prévue : branche `main`, dossier `/docs`, HTTPS activé. Les fichiers HTML générés sont suivis par Git ; aucun serveur applicatif ni service payant n’est requis. Un push sur `main` déclenche la publication.
+Source prévue : dépôt public `AghiTech92/dalili-fi-al-islam-privacy`, branche `main`, dossier `/docs`, HTTPS activé. Les fichiers HTML générés sont suivis par Git ; aucun serveur applicatif ni service payant n’est requis. Un push sur `main` déclenche la publication.
 
 La même URL doit être ajoutée dans l’application et dans Play Console. La publication du site ne configure pas les déclarations Play Console ni les réglages AdMob/UMP.
 
-## Base de rédaction — 20 septembre 2026
+## Base de rédaction — 21 septembre 2026
 
-La politique correspond à l’état inspecté de Rafik Al Mouslim : trois langues, contenus religieux disponibles hors ligne, préférences et favoris locaux, progression de lecture et d’adhkâr locale, position de premier plan pour les prières et la qibla, géocodage Android facultatif, notifications et alarmes locales, sauvegarde automatique et transfert entre appareils désactivés, Google Mobile Ads 25.4.0 et UMP 4.0.0.
+La politique correspond à l’état inspecté de Dalili fi al-Islam : trois langues, contenus religieux disponibles hors ligne, préférences et favoris locaux, progression de lecture et d’adhkâr locale, position de premier plan pour les prières et la qibla, géocodage Android facultatif, notifications et alarmes locales, sauvegarde automatique et transfert entre appareils désactivés, Google Mobile Ads 25.4.0 et UMP 4.0.0.
 
 La documentation publique Google consultée décrit actuellement Google Mobile Ads 25.5.0, tandis que l’application utilise 25.4.0. Les réglages réalisés dans AdMob/UMP et Play Console ne sont pas vérifiables depuis ce dépôt. Toute évolution des SDK, ajout de compte, serveur, analytique, médiation publicitaire, export/sauvegarde ou changement de traitement impose une révision des trois textes.
 

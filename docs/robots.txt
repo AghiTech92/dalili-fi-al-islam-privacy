@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://anaitmessaoud.github.io/rafik-al-mouslim-privacy/sitemap.xml
+Sitemap: https://aghitech92.github.io/dalili-fi-al-islam-privacy/sitemap.xml
