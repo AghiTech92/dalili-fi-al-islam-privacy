@@ -16,6 +16,10 @@ a:focus-visible{outline:3px solid var(--gold);outline-offset:5px;border-radius:3
 .languages a[aria-current=page]{background:var(--ink);color:white}
 main{max-width:1180px;min-width:0;margin-inline:auto;padding:3.5rem 2rem 2rem}
 .intro{max-width:850px;margin-block-end:3rem}
+.platforms{display:flex;flex-wrap:wrap;gap:.5rem;margin-block-end:1.5rem}
+.platforms a{padding:.55rem 1rem;min-height:44px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-weight:650;line-height:1.6;color:var(--muted)}
+.platforms a:hover{background:var(--pale);color:var(--accent)}
+.platforms a[aria-current=page]{background:var(--accent);border-color:var(--accent);color:white}
 .updated{font-size:.875rem;color:var(--accent);font-weight:650;margin:0 0 1rem}
 h1{font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.14;letter-spacing:-.035em;font-weight:750;margin:0 0 1.5rem;overflow-wrap:anywhere}
 .lead{font-size:1.125rem;line-height:1.8;color:var(--muted);margin:0}

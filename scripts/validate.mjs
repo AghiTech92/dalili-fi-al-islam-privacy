@@ -8,20 +8,24 @@ const docs = path.join(root, 'docs');
 const brands = { fr: 'Dalili fi al-Islam', en: 'Dalili fi al-Islam', ar: 'دَلِيلِي فِي الإِسْلَام' };
 const languages = Object.keys(brands);
 const base = 'https://aghitech92.github.io/dalili-fi-al-islam-privacy/';
-const pages = ['index.html', ...languages.map(lang => `${lang}/index.html`)];
+const pages = ['index.html', ...languages.map(lang => `${lang}/index.html`), 'ios/index.html', ...languages.map(lang => `ios/${lang}/index.html`)];
 const sectionIds = ['local', 'location', 'backup', 'ads', 'choices', 'retention', 'security', 'contact', 'website', 'changes'];
 
 for (const page of pages) {
-  const lang = page === 'index.html' ? 'fr' : page.split('/')[0];
+  const isIos = page.startsWith('ios/');
+  const relativePage = isIos ? page.slice(4) : page;
+  const lang = relativePage === 'index.html' ? 'fr' : relativePage.split('/')[0];
+  const platformPath = isIos ? 'ios/' : '';
   const file = path.join(docs, page);
   const html = fs.readFileSync(file, 'utf8');
   assert(html.startsWith('<!doctype html>'), `${page}: doctype`);
   assert(html.includes(`<html lang="${lang}" dir="${lang === 'ar' ? 'rtl' : 'ltr'}">`), `${page}: language/direction`);
   assert(html.includes(`· ${brands[lang]}</title>`), `${page}: app name`);
-  assert(html.includes(`rel="canonical" href="${base}${lang}/"`), `${page}: canonical`);
+  assert(html.includes(`rel="canonical" href="${base}${platformPath}${lang}/"`), `${page}: canonical`);
+  assert(html.includes(`data-platform="${isIos ? 'ios' : 'android'}"`), `${page}: platform`);
   assert.equal((html.match(/<h1>/g) || []).length, 1, `${page}: one heading`);
   assert.equal((html.match(/<section id=/g) || []).length, 10, `${page}: complete policy`);
-  assert.equal((html.match(/aria-current="page"/g) || []).length, 1, `${page}: selected language`);
+  assert.equal((html.match(/aria-current="page"/g) || []).length, 2, `${page}: selected language and platform`);
   assert.equal((html.match(/hreflang=/g) || []).length, 7, `${page}: language alternatives and navigation`);
   assert(html.includes('href="mailto:aghitech92@gmail.com"'), `${page}: contact`);
   assert(!/<script\b|<iframe\b|<form\b|http-equiv="refresh"/i.test(html), `${page}: no scripts, embeds, forms or redirects`);
@@ -42,11 +46,22 @@ for (const page of pages) {
       assert(fs.existsSync(path.join(target, 'index.html')), `${page}: index ${ref}`);
     }
   }
-  for (const code of languages) assert(html.includes(`hreflang="${code}"`), `${page}: missing ${code}`);
-  console.log(`OK ${page}: ${brands[lang]}, 10 sections, language links, anchors, assets, contact`);
+  for (const code of languages) {
+    assert(html.includes(`hreflang="${code}" href="${base}${platformPath}${code}/"`), `${page}: missing ${code} in the same platform`);
+  }
+  const policyHtml = html.slice(html.indexOf('<article'), html.indexOf('</article>'));
+  if (isIos) {
+    assert(policyHtml.includes('iCloud') && policyHtml.includes('Apple') && policyHtml.includes('iOS'), `${page}: iOS disclosure`);
+    assert(!policyHtml.includes('admob/android/'), `${page}: no Android advertising documentation`);
+    assert(policyHtml.includes('admob/ios/privacy/data-disclosure'), `${page}: iOS advertising documentation`);
+  } else {
+    assert(policyHtml.includes('Android') && policyHtml.includes('admob/android/privacy/play-data-disclosure'), `${page}: Android disclosure retained`);
+    assert(!policyHtml.includes('iCloud'), `${page}: no iOS backup claim on Android`);
+  }
+  console.log(`OK ${page}: ${brands[lang]}, platform, 10 sections, language links, anchors, assets, contact`);
 }
 
 assert(fs.existsSync(path.join(docs, '.nojekyll')));
-assert.equal((fs.readFileSync(path.join(docs, 'sitemap.xml'), 'utf8').match(/<url>/g) || []).length, 3);
+assert.equal((fs.readFileSync(path.join(docs, 'sitemap.xml'), 'utf8').match(/<url>/g) || []).length, 6);
 assert(!fs.readFileSync(path.join(docs, 'styles.css'), 'utf8').includes('@import'));
-console.log('All four pages passed structural validation.');
+console.log('All eight pages passed structural validation.');
